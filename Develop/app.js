@@ -111,11 +111,58 @@ function employeeData() {
         }
         // Render HTML
         else{
+            var main = fs.readFileSync("./templates/main.html", "utf8");
+            //Here we use the replace  method returns a new string with some or all matches of a pattern replaced by a replacement
+
+            //
+            main = main.replace(/{{ teamName }}/g, teamName);
+
+            // render all the manager information in the manager html crad class.
+            var managerCard = fs.readFileSync("./templates/manager.html", "utf8");
+            managerCard = managerCard.replace('{{ name }}', manager.getName());
+            managerCard = managerCard.replace('{{ role }}', manager.getRole());
+            managerCard = managerCard.replace('{{ id }}', manager.getId());
+            managerCard = managerCard.replace('{{ email }}', manager.getEmail());
+            managerCard = managerCard.replace('{{ officeNumber }}', manager.getOfficeNumber());
+
+            //Here we append all the team members after the manager
+            var cards = managerCard;
+            for(var i= 0; i < teamMembers.length; i++){
+                var employee = teamMembers[i];
+                cards += renderEmployee(employee);
+            }
+
+            // Add team in the main.html and outputs in team.html
+            main = main.replace('{{ team }}' , cards);
+
+            fs.writeFileSync("./output/team.html", main);
+            console.log("File is generated Successfully!");
 
         }
 
-
-
-    })
+    });
 }
+// This function is render the intern and engineer employees
+function renderEmployee(employee){
+    // Here we render the engineer.html
+    if(employee.getRole() === "Engineer"){
+        var engineerCard = fs.readFileSync("./templates/engineer.html", "utf8");
+        engineerCard = engineerCard.replace('{{ name }}', engineer.getName());
+        engineerCard = engineerCard.replace('{{ role }}', engineer.getRole());
+        engineerCard = engineerCard.replace('{{ id }}', engineer.getId());
+        engineerCard= engineerCard.replace('{{ email }}', engineer.getEmail());
+        engineerCard = engineerCard.replace('{{ github }}', engineer.getGithub());
+        return engineerCard;
+    }
+    else if(employee.getRole() === "Intern"){
+        var internCard = fs.readFileSync("./templates/intern.html", "utf8");
+        internCard = internCard.replace('{{ name }}', intern.getName());
+        internCard = internCard.replace('{{ role }}', intern.getRole());
+        internCard = internCard.replace('{{ id }}', intern.getId());
+        internCard = internCard.replace('{{ email }}', intern.getEmail());
+        internCard = internCard.replace('{{ school }}', intern.getSchool()());
+        return internCard;
+    }
+}
+employeeData();
 
