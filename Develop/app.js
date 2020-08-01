@@ -9,7 +9,7 @@ const Manager = require('./lib/Manager');
 const teamMembers = [];
 
 let manager;
-let teamName;
+let teamTitle;
 // Here we prompt the user basic info about the team
 
 function managerData() {
@@ -17,7 +17,7 @@ function managerData() {
         {
             type:"input",
             message:"What is the name of your team ?",
-            name:"teamName"
+            name:"teamTitle"
         },
         {
             type:"input",
@@ -46,8 +46,9 @@ function managerData() {
         }
     ]).then(managerAnswers => {
         manager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.officeNumber);
-        teamName = managerAnswers.teamName;
+        teamTitle = managerAnswers.teamTitle;
         console.log("Please enter the information about your team members");
+        employeeData();
 
     });
 }
@@ -115,7 +116,7 @@ function employeeData() {
             //Here we use the replace  method returns a new string with some or all matches of a pattern replaced by a replacement
 
             //
-            main = main.replace(/{{ teamName }}/g, teamName);
+            main = main.replace(/{{teamTitle}}/g, teamTitle);
 
             // render all the manager information in the manager html crad class.
             var managerCard = fs.readFileSync("./templates/manager.html", "utf8");
@@ -133,7 +134,7 @@ function employeeData() {
             }
 
             // Add team in the main.html and outputs in team.html
-            main = main.replace('{{ team }}' , cards);
+            main = main.replace('{{cards}}' , cards);
 
             fs.writeFileSync("./output/team.html", main);
             console.log("File is generated Successfully!");
@@ -147,22 +148,22 @@ function renderEmployee(employee){
     // Here we render the engineer.html
     if(employee.getRole() === "Engineer"){
         var engineerCard = fs.readFileSync("./templates/engineer.html", "utf8");
-        engineerCard = engineerCard.replace('{{ name }}', engineer.getName());
-        engineerCard = engineerCard.replace('{{ role }}', engineer.getRole());
-        engineerCard = engineerCard.replace('{{ id }}', engineer.getId());
-        engineerCard= engineerCard.replace('{{ email }}', engineer.getEmail());
-        engineerCard = engineerCard.replace('{{ github }}', engineer.getGithub());
+        engineerCard = engineerCard.replace('{{ name }}', employee.getName());
+        engineerCard = engineerCard.replace('{{ role }}', employee.getRole());
+        engineerCard = engineerCard.replace('{{ id }}', employee.getId());
+        engineerCard= engineerCard.replace('{{ email }}', employee.getEmail());
+        engineerCard = engineerCard.replace('{{ github }}', employee.getGithub());
         return engineerCard;
     }
     else if(employee.getRole() === "Intern"){
         var internCard = fs.readFileSync("./templates/intern.html", "utf8");
-        internCard = internCard.replace('{{ name }}', intern.getName());
-        internCard = internCard.replace('{{ role }}', intern.getRole());
-        internCard = internCard.replace('{{ id }}', intern.getId());
-        internCard = internCard.replace('{{ email }}', intern.getEmail());
-        internCard = internCard.replace('{{ school }}', intern.getSchool()());
+        internCard = internCard.replace('{{ name }}', employee.getName());
+        internCard = internCard.replace('{{ role }}', employee.getRole());
+        internCard = internCard.replace('{{ id }}', employee.getId());
+        internCard = internCard.replace('{{ email }}', employee.getEmail());
+        internCard = internCard.replace('{{ school }}', employee.getSchool());
         return internCard;
     }
 }
-employeeData();
+managerData();
 

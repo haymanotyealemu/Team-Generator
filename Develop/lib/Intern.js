@@ -3,7 +3,7 @@ const Employee = require("./Employee");
 class Intern extends Employee{
     // constructor initialize the new intern objects and pass the properties as an arguments both shared and specific for that class.
     constructor(name, id, email, school){
-        super(id, name,email)
+        super(name, id,email)
         this.school = school;
     }
     getSchool(){
