@@ -81,14 +81,12 @@ function employeeData() {
         {
             type:"input",
             message:"What is the Engineer's Github?",
-            name:"github",
-            when:(userinput) => userinput.empployeeRole === "Engineer"
+            name:"github"
         },
         {
             type:"input",
             message:"What is the Intern's school?",
-            name:"school",
-            when:(userinput) => userinput.empployeeRole === "Intern"
+            name:"school"
         },
         {
             type:"confirm",
