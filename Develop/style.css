@@ -1,0 +1,17 @@
+body{
+    background-color:  #ebfffc;
+
+}
+h1{
+    font-size: 18px;
+    font-weight: bold;
+}
+.employee-card{
+    margin-right: 2px;
+}
+.card-header{
+    background-color: #1E90FF;
+}
+.card-title{
+    color:#fff;
+}
