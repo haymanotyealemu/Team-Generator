@@ -1,15 +1,13 @@
 body{
     background-color: #dddddd;
     color: black;
+    font-size: 18px;
 
 }
 h1{
     font-size: 42px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-}
-.employee-card{
-    margin-right: 2px;
 }
 
 .card-title{
@@ -18,4 +16,5 @@ h1{
 }
 .card{
     margin: 3px;
+    
 }
