@@ -14,15 +14,16 @@ describe("Employee", () => {
         });
 
         test("should set the id property via constructor as argument", () => {
-            //Arrange || Act
+            //Arrange 
             const testId = 29;
+            // Act
             const e = new Employee("Sarah",testId);
             // Assert
             expect(e.id).toBe(testId);
         });
         
         test("should set the email property via constructor as argument", () => {
-            //Arrange || Act
+            //Arrange 
             const testEmail = "test@test.com";
             const e = new Employee("Sarah",100,testEmail);
             // Assert

@@ -48,9 +48,7 @@ function managerData() {
         manager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.officeNumber);
         teamTitle = managerAnswers.teamTitle;
         console.log("Please enter the information about your team members");
-            employeeData();
-        
-        
+        employeeData();
 
     });
 }
@@ -83,12 +81,14 @@ function employeeData() {
         {
             type:"input",
             message:"What is the Engineer's Github?",
-            name:"github"
+            name:"github",
+            when: (userInput) => userInput.employeeRole === "Engineer"
         },
         {
             type:"input",
             message:"What is the Intern's school?",
             name:"school",
+            when:(userInput) => userInput.employeeRole === "Intern"
         },
         {
             type:"confirm",
