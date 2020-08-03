@@ -3,6 +3,9 @@ class Employee {
         this.name = name;
         this.id = id;
         this.email = email;
+        if(typeof name !== "string" || !name.trim().length){
+            throw new Error ("Expected 'name' property not to be empty string");
+        }
     }
     getName() {
         // console.log(`Employee Name is ${this.name}`);
