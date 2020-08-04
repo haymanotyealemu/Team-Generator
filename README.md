@@ -14,7 +14,7 @@ One of the most important aspects of programming is writing code that is readabl
 ## Usage
 ![Screenshoot](Develop/image/SHALOM.png)
 
-[Videolink]()
+[Videolink](https://drive.google.com/file/d/1_mMeoN0t5JiHiPEud2IF-2_FYxQ6qrRJ/view)
 
 ## Credits
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace 
@@ -23,5 +23,8 @@ One of the most important aspects of programming is writing code that is readabl
 * https://www.youtube.com/watch?v=PFmuCDHHpwk
 
 ## Tests
-The unit test is included in the application for all classes listed in the lib directory and in the test directory you can look the respective testing code for each classes. The jest library is used for testing the app and we need to create dependancy of it in package json file.
-         npm run test
+The unit test is included in the application for all classes listed in the lib directory and in the test directory you can look the respective testing code for each classes. The jest library is used for testing the app and we need to create dependancy of it in package json file.You can run the tests using the following command line from your terminal.
+        
+              npm run test
+              
+ 
